@@ -1,0 +1,16 @@
+[Unit]
+Description=Script to handle [PiCase] button presses
+After=network-online.target
+
+[Service]
+WorkingDirectory=/root/PiCase/
+ExecStart=python3 -u /root/PiCase/raspi-button.py
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=[raspi]-button
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
